@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 
-import { EBirdTest02Service } from '../../services/ebird-test02/ebird-test02.service';
 import { Region } from './../../repositories/ebird/interfaces/regions.interface';
+import { EBirdTest02Service } from './services/ebird-test02/ebird-test02.service';
 
 @Component({
     selector: 'app-test02',

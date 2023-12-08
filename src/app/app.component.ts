@@ -1,9 +1,8 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouteConfigLoadEnd, RouteConfigLoadStart, Router } from '@angular/router';
-import { takeUntil } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { LoaderService } from './core/loader/services/loader.service';
-import { BaseComponent } from './utils/abstracts/base.abstract';
 
 @Component({
     selector: 'app-root',
@@ -11,10 +10,9 @@ import { BaseComponent } from './utils/abstracts/base.abstract';
     styleUrls: ['./app.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent extends BaseComponent {
+export class AppComponent {
 
     constructor() {
-        super();
         this._manageLazyLoadingLoader();
     }
 
@@ -26,7 +24,7 @@ export class AppComponent extends BaseComponent {
         const _loaderService = inject(LoaderService);
 
         _router.events
-            .pipe(takeUntil(this.$onDestroy))
+            .pipe(takeUntilDestroyed())
             .subscribe(event => {
 
                 if (event instanceof RouteConfigLoadStart) {

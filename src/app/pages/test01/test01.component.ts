@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
-import { EBirdTest01Service } from '../../services/ebird-test01/ebird-test01.service';
+import { EBirdTest01Service } from './services/ebird-test01/ebird-test01.service';
 import { Region } from './../../repositories/ebird/interfaces/regions.interface';
 
 @Component({
