@@ -1,1 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
+html {
+    font-family: Apple Color Emoji, Segoe UI Emoji, NotoColorEmoji, Segoe UI Symbol, Android Emoji, EmojiSymbols, EmojiOne Mozilla;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+p, h1, h2 {
+    margin-top: 0;
+}
+
+blockquote {
+    background-color: rgb(221, 245, 255);
+    border-radius: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    margin: 0 0 3rem 0;
+    max-width: 850px;
+    padding: 2rem;
+
+    & > ul > li {
+        list-style: decimal;
+    }
+}
+
+button {
+    cursor: pointer;
+    margin-right: 1rem;
+}

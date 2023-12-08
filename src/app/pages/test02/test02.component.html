@@ -1,0 +1,51 @@
+<h2>Test 02</h2>
+
+<blockquote>
+    <p>&#8505;</p>
+    <p>
+        Diferente do <kbd>EBirdTest01Service</kbd>, o <kbd>EBirdTest02Service</kbd> encapsula a
+        requisição em um método que recebe parâmetros e atualiza a lista no signal `recentObsBirds`
+        pós requisição.
+    </p>
+    <h4>Pontos positivos:</h4>
+    <ul>
+        <li>Detecção no template otimizada em relação a trabalhar com <kbd>Observable</kbd> direto tradicionalmente (<kbd>RxJs</kbd>).</li>
+        <li>Não precisa de workaround para não efetuar requisição logo após o instanciamento deste Service.</li>
+        <li>Os parametros para requisição (no caso apenas Region) não precisam ser armazenados neste service.</li>
+    </ul>
+    <h4>Pontos negativos:</h4>
+    <ul>
+        <li>Não há como usar <kbd>distinctUntilChanged</kbd> e operadores que precisam ter a requisição salva em uma propriedade.</li>
+        <li>Em relação ao <kbd>EBirdTest01Service</kbd> o <kbd>distinctUntilChanged</kbd> não ocorre naturalmente.</li>
+        <li>Para evitar multiplas requisições iguais foi necessário workaround.</li>
+        <li>A lista de pássaros depende da chamada manual do método <kbd>updateRecentObsBirds</kbd> e isso pode ser problemático.</li>
+    </ul>
+</blockquote>
+
+<p>Get recent observations from below region options.</p>
+<button type="button" (click)="setObsRegion('BR')">BR region</button>
+<button type="button" (click)="setObsRegion('KZ')">KZ region</button>
+<button type="button" (click)="setObsRegion('US')">US region</button>
+
+<ng-container *ngIf="recentObsBirds().length">
+    <h3>Recent observations in {{ obsRegion() }} region</h3>
+    <ul>
+        <li *ngFor="let bird of recentObsBirds()">
+            <ul>
+                <li>speciesCode: {{ bird.speciesCode }}</li>
+                <li>comName: {{ bird.comName }}</li>
+                <li>sciName: {{ bird.sciName }}</li>
+                <li>locId: {{ bird.locId }}</li>
+                <li>locName: {{ bird.locName }}</li>
+                <li>obsDt: {{ bird.obsDt }}</li>
+                <li>howMany: {{ bird.howMany }}</li>
+                <li>lat: {{ bird.lat }}</li>
+                <li>lng: {{ bird.lng }}</li>
+                <li>obsValid: {{ bird.obsValid }}</li>
+                <li>obsReviewed: {{ bird.obsReviewed }}</li>
+                <li>locationPrivate: {{ bird.locationPrivate }}</li>
+                <li>subId: {{ bird.subId }}</li>
+            </ul>
+        </li>
+    </ul>
+</ng-container>

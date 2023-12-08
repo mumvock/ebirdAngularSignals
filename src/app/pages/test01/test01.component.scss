@@ -1,0 +1,9 @@
+:host {
+    background-color: #eee;
+    display: block;
+    padding: 2rem;
+
+    & > ul > li {
+       margin-top: 2rem;
+    }
+}
